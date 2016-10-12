@@ -1,0 +1,7 @@
+# Note on some normally use regular expression, and stuff 
+# Author: Guang Mo 
+# Date: 2016 Oct 12th
+
+#1 finding words after a pattern with using of awk: 
+# $4 is the not empty words within the output 
+grep 'Record Length   = ' Kall.txt | awk '{print $4}' 
