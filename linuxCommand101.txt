@@ -1,0 +1,2 @@
+#get space: 
+df -g .  

@@ -1,0 +1,6 @@
+## notes on DataWorks Foundations
+
+#1 "Open for data" strategy
+   - Data is the new natural resource for digital value and competition 
+   - Data and analytics are the foundation for cognitive buisness
+
