@@ -1,0 +1,15 @@
+# What is linear programming: 
+
+also called linear optimization, a method to achieve the best outcome in a mathematical model whose requirements are represented by linear relationships. 
+
+wiki: 
+More formally, linear programming is a technique for the optimization of a linear objective function, subject to linear equality and linear inequality constraints. Its feasible region is a convex polytope, which is a set defined as the intersection of finitely many half spaces, each of which is defined by a linear inequality. Its objective function is a real-valued affine (linear) function defined on this polyhedron. A linear programming algorithm finds a point in the polyhedron where this function has the smallest (or largest) value if such a point exists.
+
+
+Keys: 
+1. objective function (you want maximum or minum ) 
+2. set of constrains 
+
+||
+\/ 
+convert to matrix form and solve with simplex 

@@ -5,3 +5,7 @@
 #1 finding words after a pattern with using of awk: 
 # $4 is the not empty words within the output 
 grep 'Record Length   = ' Kall.txt | awk '{print $4}' 
+
+
+# getting range of lines from a file: 
+sed -n '3001,6000p' loadTB101.del > loadTB101a.del 
