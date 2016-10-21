@@ -1,0 +1,23 @@
+## Note taking for algorithms
+## Author: Guang Mo 
+
+
+##### Dynamic Programming
+Overview: 
+repeatedly calculation, with some of previous results saved in a table, which 
+avoid duplicated calculations. 
+- an example of time-memory trade-off 
+
+
+Optimal substructure: optimal solutions to a problem incorporate optimal solutions to related subproblems, which may be solved independently. 
+
+Two equivalent ways to implement a dynamic-programming approach: 
+
+Approach #1: top-down with memoization
+- saves results, and checks if subproblem has been solved
+
+Approach #2: bottom-up method 
+- depends on some natural notion of the "size" of a subproblem
+
+
+##### End of dynamic programming
