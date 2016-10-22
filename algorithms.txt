@@ -8,6 +8,11 @@ repeatedly calculation, with some of previous results saved in a table, which
 avoid duplicated calculations. 
 - an example of time-memory trade-off 
 
+# 4 Steps of applying dynamic programming
+1. characterize the structure of an optimal solution 
+2. Recursively define the value of an optimal solution 
+3. Compute the value of an optimal solution 
+4. Construct an optimal solution from computed information 
 
 Optimal substructure: optimal solutions to a problem incorporate optimal solutions to related subproblems, which may be solved independently. 
 
@@ -15,9 +20,40 @@ Two equivalent ways to implement a dynamic-programming approach:
 
 Approach #1: top-down with memoization
 - saves results, and checks if subproblem has been solved
+- usually refers as # "depth-first search" of the subproblem graph
+
 
 Approach #2: bottom-up method 
 - depends on some natural notion of the "size" of a subproblem
+
+Subproblems can be represented in subproblem graph with G=(V,E) 
+- number of subproblems is equal to the number of vertices in the subproblem graph
+
+#15.2 Matrix-chain multiplication
+- How we parenthesize a chain of matrics can have a dramatic impact on the cost of evaluating the product. 
+
+# matrix-chain multiplication problem: given a chain of n matrics, fully parenthesize the prduct in a way that minimizes the number of scalar multiplications. 
+ 
+
+#15.3 Elements of dynamic programming 
+- Two key ingredients: optimal substructure and overlapping subproblems. 
+
+Optimal substructure, common steps to identify optimal substructure
+1. solution to the problem consists of making a choice, making such choice leaves one of more subproblems to be solved 
+
+2. you are given the choice that leads to an optimal solution, and you assume that it has been given to you ONLY
+
+3. Given this choice, you determine which subproblems ensue and how to best characterize the resulting space of subproblems 
+
+4. show that the solutions to the subproblems used within an optimal solution must themselves be optimal using "cut-and-paste" technique. 
+
+
+Overlapping subproblems: 
+-Total number of distinct subproblems is a polynomial in the input size
+
+# running time of a dynamic-programming algorithm depends on the product of two facts: the number of subproblems overall and how many choices we look at for each subproblem. 
+
+subproblems need to be independent, solving one problem does not affect the other problem. 
 
 
 ##### End of dynamic programming
