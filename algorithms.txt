@@ -1,12 +1,77 @@
 ## Note taking for algorithms
 ## Author: Guang Mo 
 
+###### 7 Steps toward designing an efficient algorithm ########
+1. Define computational problem 
+2. Abstract irrelevant detail 
+3. Reduce to a problem you learn in "Algorithm" text book 
+4. Else design using "algorithmic toolbox" 
+5. Analyze algorithm's scalability 
+6. Implement & evaluate performance 
+7. Repeat (optimize, generalize ) 
 
-##### Dynamic Programming
-Overview: 
-repeatedly calculation, with some of previous results saved in a table, which 
-avoid duplicated calculations. 
-- an example of time-memory trade-off 
+
+################### Analysis of Algorithms #########################
+
+
+###########
+########### Sorting
+###########
+
+#### Insertion Sort ##########
+
+
+## Asymptotic analysis ## 
+- Big O (upper bound), -Pi (lower bound), and Theta (between) 
+
+# Solving Recurrences ## 
+1. Substitution method
+{
+   a. Guess the form of the solution 
+   b. Verify by induction 
+   c. Solve for constants 
+}
+
+
+
+2. Iterating the recurrence 
+
+3. Recursion tree 
+
+4. Master method 
+
+############################ Brute Force algorithm ############
+- not really an algorithm, it simple checks element by element 
+
+########################### Divide and Conquer ##################
+- simple idea by dividing the big problem into small problems, and conquer one at a time. --- combine as well 
+
+########################### Binary Search Trees (BSTs) #################
+- all nodes in the left subtree is less or equal to the value of current node 
+- all nodes in the right subtree is greater or equal to the value of current node 
+
+Balanced search trees: trees which maintains height of O(lgn)
+
+########## Red-black trees 
+- requires an extra one-bit color field in each node
+# Properties: 
+1. Every node is either red or black 
+2. The root and leaves (NIL's) are black 
+3. If a node is red, then its parent is black 
+4. All simple paths from any node x to a descendant leaf have the same number of black nodes == Black-height(x)  -- counting the NIL as one height
+# Theorem: 
+n keys has height,  h <= 2lg(n+1) 
+# Query operations: 
+Search, Min, Max, Successor, and Predecessor all run in O(lg n) time on a red-black tree with n nodes
+
+
+########## End of Red-black trees 
+
+######################################## Dynamic Programming
+# Overview: 
+# repeatedly calculation, with some of previous results saved in a table, which 
+# avoid duplicated calculations. 
+# - an example of time-memory trade-off 
 
 # 4 Steps of applying dynamic programming
 1. characterize the structure of an optimal solution 
@@ -54,6 +119,13 @@ Overlapping subproblems:
 # running time of a dynamic-programming algorithm depends on the product of two facts: the number of subproblems overall and how many choices we look at for each subproblem. 
 
 subproblems need to be independent, solving one problem does not affect the other problem. 
-
-
 ##### End of dynamic programming
+
+
+
+###################################### Greedy Algorithms #####################
+# Overview: picks local maximum at each entry, not neccessarily yeilds 
+#	    absolute maximum. 
+#####
+
+
