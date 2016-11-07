@@ -129,3 +129,14 @@ subproblems need to be independent, solving one problem does not affect the othe
 #####
 
 
+###################################### Graphic Algorithm #####################
+# Graphic is represented by vertexes and edges, and each edge is represented 
+# with adjacent vertexes. A graph can be represented with either adjacency-list
+# or adjacency-matrix representation. 
+##############################################################################
+
+##############################################################################
+# Breadth-first serach algorithm
+##############################################################################
+Overview: "Given a graph G = (V,E) and a distinguished source vertex s, breadth-first search systematically explores the edges of G to “discover” every vertex that is reachable from s. It computes the distance (smallest number of edges) from s to each reachable vertex. It also produces a “breadth-first tree” with root s that contains all reachable vertices. For any vertex v reachable from s, the simple path in the breadth-first tree from s to v corresponds to a “shortest path” from s to v in G, that is, a path containing the smallest number of edges. The algorithm works on both directed and undirected graphs. " 
+
