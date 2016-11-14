@@ -140,3 +140,38 @@ subproblems need to be independent, solving one problem does not affect the othe
 ##############################################################################
 Overview: "Given a graph G = (V,E) and a distinguished source vertex s, breadth-first search systematically explores the edges of G to “discover” every vertex that is reachable from s. It computes the distance (smallest number of edges) from s to each reachable vertex. It also produces a “breadth-first tree” with root s that contains all reachable vertices. For any vertex v reachable from s, the simple path in the breadth-first tree from s to v corresponds to a “shortest path” from s to v in G, that is, a path containing the smallest number of edges. The algorithm works on both directed and undirected graphs. " 
 
+##############################################################################
+# Depth-first search
+##############################################################################
+Overview: to search "deeper" whenever possible
+The predecessor subgraph of a depth-first search forms a depth-first forest comprising several depth-first trees
+
+Pseudocode: 
+DFS(G)
+for each vertex u in G.V
+	u.volor = WHITE
+	u.pi = NIL 
+time = 0 
+for each vertex u in G.V 
+	if u.color == WHITE
+		DFS-VISIT(G,u) 
+
+DFS-VISIT(G,u): 
+time = time + 1; 
+u.d = time; 
+u.color = GRAY;
+for each v in G.Adj[u]
+	if v.color == WHITE
+		v.pi = u
+		DFS-VISIT(G,v); 
+u.color = BLACK 
+time = time + 1
+u.f = time 
+
+Properties: 
+1. a vertex v is a desendant of vertex u in the depth-first forest if and only if v is discovered during the time in which u is gray. 
+2. discovery and finishing times have parenthesis structure( bounded by timestamps)
+
+White-path theorem: 
+vertex v is a descendant of vertex u if and only if at the time u.d that the search discovers u, there is a path from u to v consisting entirely of white vertices. 
+ 
