@@ -174,4 +174,16 @@ Properties:
 
 White-path theorem: 
 vertex v is a descendant of vertex u if and only if at the time u.d that the search discovers u, there is a path from u to v consisting entirely of white vertices. 
+
+
+################################################################################# Bit Manipulation 
+################################################################################
+When performing bit shifting, need to be cautious about boundry condition, eg, register can't hold the value. 
+
+Xor: 0 ^ 0 = 0; 1 ^ 0 = 1; 0 ^ 1 = 1; 1 ^ 1 = 0; 
+
+Left Shift: 
+x << y means x shifted y bits to the left, out of boundary, bits just dropped off 
+Right shift: 
+x >> y 
  
