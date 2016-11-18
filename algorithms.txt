@@ -175,6 +175,32 @@ Properties:
 White-path theorem: 
 vertex v is a descendant of vertex u if and only if at the time u.d that the search discovers u, there is a path from u to v consisting entirely of white vertices. 
 
+#################################################################################
+# Minimum-spanning-tree 
+################################################################################# 
+- connected, undirected graph and it is acyclic, which forms a tree (no cycle) 
+
+Solving for minimum-spanning-tree problem
+
+
+### Kruskal's algorithm 
+The set A is a forest whose vertices are all those of the given graph, The safe edge added to A is always a least-weight edge in the graph that connects two distinct components. 
+
+MST-KRUSKAL(G,w):
+1  A = 0; 
+2  for each vertex v in G.V: 
+3	MAKE-SET(v) 
+4  sort the edges of G.E into nondecreasing order by weight w 
+5  for each edge (u,v) in G.E, taken in nondecreasing order by weight
+6	if FIND-SET(u) != FIND-SET(v)
+7		A = A OR {(u,v)}
+8		UNION(u,v)
+9  return A
+
+Total running time is O(ElgE) 
+
+### Prim's algorithm 
+The set A forms a single tree. The safe edge added to A is always a least-weight edge connecting the tree to a vertex not in the tree. 
 
 ################################################################################# Bit Manipulation 
 ################################################################################
