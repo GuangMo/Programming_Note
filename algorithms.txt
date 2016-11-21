@@ -202,6 +202,150 @@ Total running time is O(ElgE)
 ### Prim's algorithm 
 The set A forms a single tree. The safe edge added to A is always a least-weight edge connecting the tree to a vertex not in the tree. 
 
+- need a fast way to select a new edge to add to the tree formed by the edges in A. 
+
+MST-PRIM(G,w,r): 
+1 for each u in G.V 
+2    u.key = INFINITE 
+3    u.pi = NIL 
+4 r.key = 0 
+5 Q = G.V 
+6 while Q != 0 
+7    u = EXTRACT-MIN(Q); 
+8    for each v in G.Adj[u]:   # this loop updates the info only, but not added to tree 
+9	if v in Q and w(u,v) < v.key
+10	   v.pi = u   ## becomes parent 
+11	   v.key = w(u,v)
+
+
+###############################################################################
+# Single-Source Shortest Paths 
+###############################################################################
+- weighted, directed graph G=(V,E)
+If there is a negative-weight cycle on some path from s to v, we define &(s,v) = -INFINITY 
+
+- as long as a shortest path has 0-weight cycles, we can repeatedly remove 
+these cycles from the path until we have a shortest path that is cycle-free
+
+acyclic path contains at most |V| - 1 edges
+
+A shortest-paths tree rooted at s is a directed subgraph G' = (V', E')
+1. V' is the set of vertices reachable from s in G 
+2. G' forms a rooted tree with root s, and 
+3. for all v in V', the unique simple path from s to v in G' is a shortest
+path from s to v in G. 
+
+# Relaxation technique 
+ maintain an attribute v.d, which is an upper bound on the weight of a shortest path from source s to v. v.d is shortest-path estimate
+
+INITIALIZE-SINGLE-SOURCE(G,s): 
+1   for each vertex v in G.V
+2	v.d = INFINITY
+3	v.pi = NIL 
+4.  s.d = 0 
+
+RELAX(u,v,w): 
+1   if v.d > u.d + w(u,v)
+2	v.d = u.d + w(u,v) 
+3	v.pi = u
+
+#### Properties of shortest paths and relaxation: 
+Triangle inequality: 
+For any edge (u,v) in E, we have Shortest(s,v) <= Shortest(s,u) + w(u,v)
+
+Upper-bound property: 
+We always have v.d >= Shortest(s,v) for all vertices v in V, and once v.d achieves the value Shortest(s,v), it never changes 
+
+No-path property: 
+If there is no path from s to v, then we always have v.d = Shortest(s,v) =
+INFINITY 
+
+Convergence property: 
+If s->u -> v is a shortest path in G for some u,v in V, and if u.d = Shortest(s,u) at any time prior to relaxing edge (u,v), then v.d = Shortest(s,v) at all times afterward. 
+
+Path-relaxation property: 
+If p is a shortest path, and relaxation estimate is each Shortest(s, vk)
+
+Predecessor-subgraph property: 
+Once v.d = Shortest(s,v) for all v in V, the predecessor subgraph is a 
+shortest-paths tree rooted at s. 
+
+#############################################################################  The Bellman-Ford algorithm
+############################################################################
+The Bellman-Ford algorithm solves the single-source shortest-paths problem in the general case in which edge weights may be negative. Given a weighted, directed graph G= (V,E) with source s and weight function w:E -> R, the Bellman-Ford algorithm returns a boolean value indicating whether or not there is a negative-weight cycle that is reachable from the source. If there is such a cycle, the algorithm indicates that no solution exists. If there is no such cycle, the algorithm produces the shortest paths and their weights. 
+
+BELLMAN-FORD(G,w,s): 
+1 INITIALIZE-SINGLE-SOURCE(G,s)
+2 for i = 1 to |G.V| - 1 
+3    for each edge (u,v) in G.E 
+4	RELAX(u,v,w)
+5 for each edge (u,v) in G.E
+6    if v.d > u.d + w(u,v) 
+7	 return FALSE
+8 return TRUE 
+
+############################################################################# Dijkstra's algorithm 
+############################################################################
+DIJKSTRA(G,w,s): 
+1 INITIALIZE-SINGLE-SOURCE(G,s)
+2 S = 0
+3 Q = G.V
+4 while Q != 0 
+5    u = EXTRACT-MIN(Q)
+6    S = S union {U}
+7    for each vertex v in G.Adj[u] 
+8	RELAX(u,v,w)
+
+#Correctness of Dijkstra's algorithm 
+Dijkstra's algorithm, run on a weighted, directed graph G = (V,E) with
+non-negative weight function w and source s, terminates with u.d = Shortest(s,u) for all vertices u belongs V
+
+########################################################################
+### Difference constraints and shortest paths 
+########################################################################
+Feasibility problem through linear programming 
+
+# Systems of difference constraints 
+
+Let x = (x1,x2,...,xn) be a solution to a system Ax <= b of difference constraints, and let d be any constant. Then x + d = (x1+d, x2+d,...,xn + d) is a solution to Ax <= b as well 
+
+########################################################################
+### All-Pairs Shortest Paths 
+########################################################################
+
+
+########################################################################
+### Maximum Flow 
+########################################################################
+Flow networks: 
+A flow network G = (V,E) is a directed graph in which each edge (u,v) in 
+E has a nonnegative capacity c(u,v) >= 0. 
+Since each vertex other than s has at least one entering edge, |E| >= |V| 
+
+########################################################################
+### The Ford-Fulkerson method 
+########################################################################
+- depends on 3 important ideas 
+	1. residual networks
+	2. augmenting paths
+	3. cuts
+
+FORD-FULKERSON-METHOD(G,s,t): 
+1 initialize flow f to 0 
+2 while there exists an augmenting path p in the residual network Gf 
+3    augment flow f along p 
+4 return f 
+
+# Residual networks: 
+The only edges of G that are in Gf are those that can admit more flow
+
+residual capacity cf(u,v) = v(u,v) -f(u,v) 
+
+cf(p) = min{cf(u,v):(u,v) is on p} 
+
+A flow is maximum if and only if its residual network contains no 
+augmenting path
+
 ################################################################################# Bit Manipulation 
 ################################################################################
 When performing bit shifting, need to be cautious about boundry condition, eg, register can't hold the value. 
