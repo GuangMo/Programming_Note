@@ -9,3 +9,20 @@ grep 'Record Length   = ' Kall.txt | awk '{print $4}'
 
 # getting range of lines from a file: 
 sed -n '3001,6000p' loadTB101.del > loadTB101a.del 
+
+# awk read rows:  4th row
+db2 "select count_big(*) from t1" | awk 'FNR == 4 {print}' 
+
+# tr -d  can be used to delete special characters 
+db2 "select count_big(*) from t1" | awk 'FNR == 4 {print}' | tr -d " \t\n\r\." 
+# learning TODO Oct27
+grep Function tid* |cut -c '20-200'|sort |uniq -c |sort -nr
+
+# grep to specify upper and below lines
+grep's -A 1 option will give you one line after; -B 1 will give you one line before; and -C 1 combines both to give you one line both before and after. 
+
+# return line number with grep 
+grep -n will return line number
+
+# return the first word before a special pattern 
+cut -d  \: -f 1     # in this case, ":" is the special
