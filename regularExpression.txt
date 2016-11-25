@@ -26,3 +26,10 @@ grep -n will return line number
 
 # return the first word before a special pattern 
 cut -d  \: -f 1     # in this case, ":" is the special
+
+# get rid of the last character 
+   fileName=${1%?};    #where 1 is same as $1 the first input 
+
+# ksh addition math example
+   previousVer=$((versionNum-1));  #has to perform within $ 
+
