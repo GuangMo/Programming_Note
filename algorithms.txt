@@ -18,8 +18,129 @@
 ########### Sorting
 ###########
 
-#### Insertion Sort ##########
+############################# Insertion Sort ###########################
 
+
+############################# Begin Heapsort ###########################
+Runtime: O(nlgn), which combines the better attributes of merge sort and insertion sort. 
+
+Heap: a data structure that is an array which is almost binary tree
+Array A, two attributes.
+A.length --> total length of an array 
+A.heap-size --> actual number elements stored in the array 
+
+PARENT(i): 
+1. return [i/2] 
+
+LEFT(i):
+1   return 2i 
+
+RIGHT(i): 
+1   return 2i+1 
+
+Two types of heap: max-heaps, and min-heap
+ eg, max-heaps:   A[PARENT(i)] >= A[i] 
+     min-heaps:   A[PARENT(i)] <= A[i] 
+
+height is defined as: the number of edges on the longest simple downward path from the node to a leaf. 
+
+MAX-HEAPIFY: maintaining the max-heap property, runs in O(lgn) time 
+BUILD-MAX-HEAP: runs in linear time, produces a max heap from unorder input array
+HEAPSORT: O(nlgn), sorts an array in place
+MAX-HEAP-INSERT, HEAP-EXTRACT-MAX,HEAP-INCREASE-KEY, HEAP-MAXIMUM run in O(lgn) 
+
+Building a heap: 
+- arrange in an array
+
+BUILD-MAX-HEAP(A):
+1  A.heap-size = A.length
+2  for i = [A.length/2] downto 1 
+3     MAX-HEAPIFY(A,i)
+
+# Sorting algorithm: Heapsort(A) 
+- key idea is to extract one element at a time then resort the heap
+HEAPSORT(A): 
+1 BUILD-MAX-HEAP(A)
+2 for i = A.length downto 2 
+3    exchange A[1] with A[i] 
+4    A.heap-size = A.heap-size - 1 
+5    MAX-HEAPIFY(A,1) 
+
+# Priority queues
+- most of use of heap
+- max-priority queues and min-priority queues, elements are associated with a key 
+
+A max-priority queue has following operation: 
+-INSERT( S, x) inserts the element x into the set S
+-MAXIMUM(S) returns the element of S with the largest key 
+-EXTRACT-MAX(S) removes and returns the element of S with the largest key 
+-INCREASE-KEY(S,x,k) increases the value of element x's key to the new value
+	k, which is assumed to be at least as large as x's current key value
+
+HEAP-MAXIMUM(A)
+1   return A[1] 
+
+HEAP-EXTRACT-MAX(A)
+1 if A.heap-size < 1 
+2    error "heap underflow" 
+3 max = A[1] 
+4 A[1] = A[A.heap-size] 
+5 A.heap-size = A.heap-size -1 
+6 MAX-HEAPIFY(A,1) 
+7 return max
+
+HEAP-INCREASE-KEY(A,i,key):
+1 if key < A[i]
+2    error "new key is smaller than current key" 
+3 A[i] = key
+4 while i > 1 and A[PARENT(i) < A[i]
+5    exchange A[i] with A[PARENT(i)] 
+6    i = PARENT(i)
+
+MAX-HEAP-INSERT(A,key): 
+1 A.heap-size = A.heap-size + 1 
+2 A[A.heap-size] = -INFINITE
+3 HEAP-INCREASE-KEY(A,A.heap-size, key) 
+
+===> The functions are highly dependend on one or other, over-all complexity must be analyze thoroughly. 
+
+############################# End Heapsort ###########################
+
+############################# Beginning of  Quicksort ##########################
+Overview: worse case O(n^2), but it is often the best practical choice for
+sorting
+average: O(nlgn), with small constant factor, sorting in place
+- an application of three-step divide-and-conquer process
+
+# Divide: Partition the array A[p..r] into two possibly empty subarray A[p..q-1] and A[q+1..r], A[p] is the cut off element
+
+# Conquer: Sort the two subarrays A[p..q-1] and A[q+1..r] by recursive calls to quicksort
+
+#Combine: Because the subarrays are already sorted, no work is needed to combine them; the entire array A[p..r] is now sorted 
+
+QUICKSORT(A,p,r)
+1 if p < r
+2    q = PARTITION(A,p,r) 
+3    QUICKSORT(A,p,q-1)
+4    QUICKSORT(A,q+1,r) 
+
+Partitioning the array
+- purpose: It is to divide an array, such that the array on the left is 
+smaller or equal to the index, and the array on the right is large or equal
+to the index. 
+
+PARTITION(A,p,r):
+1 x=A[r]
+2 i = p - 1; 
+3 for j = p to r - 1 
+4    if A[j] <= x
+5 	 i = i + 1   # moving one of the list 
+6	 exchange A[i] with A[j]  # the pivot is only changed when it is smaller
+7 exchange A[i+1] with A[r]    
+8 return i + 1; 
+
+
+############################# End Quicksort ###########################
 
 ## Asymptotic analysis ## 
 - Big O (upper bound), -Pi (lower bound), and Theta (between) 
