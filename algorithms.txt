@@ -139,9 +139,51 @@ PARTITION(A,p,r):
 7 exchange A[i+1] with A[r]    
 8 return i + 1; 
 
+#Performance of quicksort: 
+- almost always the same for average case 
+
+# Random sampling
+- randomly chosen element instead of using A[r] 
+RANDOMIZED-PARTITION(A,p,r): 
+1 i = RANDOM(p,r)
+2 exchange A[r] with A[i] 
+3 return PARTITION(A,p,r) 
 
 ############################# End Quicksort ###########################
 
+############################# Sorting in Linear Time###########################
+Comparison Sorts: sorted order based on comparisons between the input elements
+
+Counting sort, radix sort, and bucket sort run in linear time 
+
+# Lower bounds for sorting: 
+The decision-tree model: each internal node by i:j , represents a comparison A[i] <= A[j]
+
+# Counting sort 
+- assumes input elements are in range of 0-k 
+- 3 arrays needed, input A, output B, and C for temporary working storage C[0..k]
+
+COUNTING-SORT(A,B,k):
+1 let C[0..k] be a new array
+2 for i = 0 to k 
+3    C[i] = 0 
+4 for j = 1 to A.length 
+5    C[A[j]] = C[A[j]]+1
+6 //C[i] now contains the number of elements equal to i
+7 for i = 1 to k
+8    C[i] = C[i] + C[i-1]
+9 //C[i] now contains the number of elements less than or equal to i
+10 for j = A.length downto 1 
+11    B[C[A[j]]] = A[j]
+12    C[A[j]] = C[A[j]] - 1 
+
+values are basically exchanged via array C
+O(n) when the assumption is correct
+
+# Radix sort
+
+
+############################# End Linear time sorting #########################
 ## Asymptotic analysis ## 
 - Big O (upper bound), -Pi (lower bound), and Theta (between) 
 
