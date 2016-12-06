@@ -181,9 +181,34 @@ values are basically exchanged via array C
 O(n) when the assumption is correct
 
 # Radix sort
+Sorting inputs with multiple entries, such as date, which contains year, month, day 
 
+RADIX-SORT(A,d):
+1 for i = 1 to d 
+2    use a stable sort to sort array A on digit i 
+
+# Bucket sort
+- assumes inputs are evenly distributed over a range 
+
+BUCKET-SORT(A): 
+1 let B[0..n-1] be a new array 
+2 n = A.length 
+3 for i = 0 to n -1 
+4    make B[i] an empty list 
+5 for i = 1 to n 
+6    insert A[i] into list B[[nA[i]]]
+7 for i = 0 to n - 1 
+8    sort list B[i] with insertion sort 
+9 concatenate the lists B[0], B[1],...,B[n-1] together in order
+
+somehow they proof that the insertion sort is with runtime 2- 1/n, as a result, 
+the average runtime for bucket sort is O(n) 
 
 ############################# End Linear time sorting #########################
+
+############################# Medians and Order Statistics ###################
+
+
 ## Asymptotic analysis ## 
 - Big O (upper bound), -Pi (lower bound), and Theta (between) 
 
@@ -214,6 +239,22 @@ O(n) when the assumption is correct
 - all nodes in the right subtree is greater or equal to the value of current node 
 
 Balanced search trees: trees which maintains height of O(lgn)
+
+# Insertion and deletion 
+TREE-INSERT(T,z)
+1 y = NIL
+2 x = T.root 
+3 while x != NIL 
+4    y = x 
+5    if z.key < x.key 
+6    	x = x.left 
+7    else x = x.right 
+8 z.p = y
+9 if y == NIL
+10   T.root = z   // tree T was empty 
+11 elseif z.key < y.key 
+12    y.left = z 
+13 else y.right = z 
 
 ########## Red-black trees 
 - requires an extra one-bit color field in each node
