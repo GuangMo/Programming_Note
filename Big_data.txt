@@ -2,4 +2,29 @@
 
 
 ### Mapreduce algorithms ### 
+1.Map function
+2.Shuffle:  categorize entries 
+3. Reduce
 
+##### Framework to solve problems ### 
+1. Deals with fault tolerance 
+2. assign workers to map and reduce tasks 
+3. Moves processes to data 
+4. Shuffles and sorts intermedia data 
+5. deals with errors. 
+
+---- the whole concept is similar to MPP
+
+
+###### HADOOP introduction ##### 
+- designed to work on cheap, unreliable clusters
+- From the onset, designed to scale 
+
+# Two key aspects of HADOOP # 
+1. MapReduce framework 
+
+2. Hadoop Distributed File System = HDFS 
+{
+   - data needs to be stroed on multiple machines 
+   - 
+}
