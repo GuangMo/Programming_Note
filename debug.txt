@@ -1,0 +1,22 @@
+## This doc is used to take notes for problem determination
+
+#High CPU deterministic tool: 
+ - AIX: perfpmr.sh -x trace.sh 
+
+- Linux: perf record/report  — oprofile 
+
+- Solaries: dtrace 
+- HP: caliper 
+
+
+#Hang: 
+- AIX: pdump.sh 
+- Linux: 
+{
+ - echo "i" > /proc/sys/kernel/sysrq 
+ - echo "i" > /proc/sysrq-trigger 
+ - dmesg > kernel.stacks 
+ - Do a cat of /rpoc/<db2sysPid>/task/<task>/stack 
+}
+OS - in kernel core, no interruption is possible.. 
+
