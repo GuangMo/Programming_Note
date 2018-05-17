@@ -1,0 +1,7 @@
+Notes on using perl (quick reference in the future): 
+
+qw(A B): This function is a quick way to specify a lot of little single-quoted words. For example, qw(foo bar baz) is equivalent to ('foo', 'bar', 'baz'). 
+
+strings can be used to join together via join(), eg: 
+join("<separateSymbol", "a", "b" ); 
+
